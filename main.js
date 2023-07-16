@@ -45,6 +45,17 @@ function ready() {
         var  button = addCart[i]
         button.addEventListener('click' , addCartClicked)
     }
+    //But button work
+    document.getElementsByClassName('btn-buy')[0].addEventListener("click" , buyButtonClicked)
+}
+// But Button
+function buyButtonClicked(){
+    alert('Your Order is placed')
+    var cartContent = document.getElementsByClassName("cart-content")[0]
+    while (cartContent.hasChildNodes()){
+        cartContent.removeChild(cartContent.firstChild)
+    }
+    updatetotal();
 }
 
 // Remove item from cart
@@ -115,8 +126,9 @@ function updatetotal() {
         var price = parseFloat(priceElement.innerText.replace("$", ""))
         var quantity = quantityElement.value
         total = total + (price * quantity)
+    }
         // IF price containt some cents value
         total = Math.round(total *100) / 100
         document.getElementsByClassName('total-price')[0].innerText = '$' + total
-    }
+    
 }
